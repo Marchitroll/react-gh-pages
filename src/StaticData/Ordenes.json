@@ -1,0 +1,489 @@
+[
+    {
+        "id": 1,
+        "nroOrden": 1,
+        "usuario": "Juan Pérez",
+        "fecOrden": "01/05/2024",
+        "total": "S/ 50.00",
+        "correo": "goku@example.com",
+        "estado": "En proceso",
+        "accion": "Ver",
+        "productos": 7,
+        "direccion": "Dirección 17",
+        "dir_envio": {
+          "linea1": "123 Calle Principal",
+          "linea2": "Piso 2, Apartamento B",
+          "distrito": "Miraflores",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "tarjeta",
+            "numeroTarjeta": "9012 3456 7890 1234"
+        },
+        "metodoEnvio": "economico",
+        "productoID": 1
+    },
+    {
+        "id": 2,
+        "nroOrden": 2,
+        "usuario": "María Gómez",
+        "fecOrden": "02/05/2024",
+        "total": "S/ 75.00",
+        "correo": "maria@example.com",
+        "estado": "Pendiente",
+        "accion": "Ver",
+        "productos": 10,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "456 Avenida Norte",
+          "linea2": "Torre Sur, Piso 10",
+          "distrito": "San Isidro",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 2
+    },
+    {
+        "id": 3,
+        "nroOrden": 3,
+        "usuario": "Carlos López",
+        "fecOrden": "03/05/2024",
+        "total": "S/ 100.00",
+        "correo": "carlos@example.com",
+        "estado": "Entregado",
+        "accion": "Ver",
+        "productos": 3,
+        "direccion": "Dirección 17",
+        "dir_envio": {
+          "linea1": "789 Calle Central",
+          "linea2": "",
+          "distrito": "Barranco",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "tarjeta",
+            "numeroTarjeta": "9012 3456 7890 1234"
+        },
+        "metodoEnvio": "economico",
+        "productoID": 3
+    },
+    {
+        "id": 4,
+        "nroOrden": 4,
+        "usuario": "Ana Martínez",
+        "fecOrden": "04/05/2024",
+        "total": "S/ 120.00",
+        "correo": "ana@example.com",
+        "estado": "Cancelado",
+        "accion": "Ver",
+        "productos": 12,
+        "direccion": "Dirección 17",
+        "dir_envio": {
+          "linea1": "321 Avenida del Sol",
+          "linea2": "Bloque A, Piso 5",
+          "distrito": "La Molina",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "tarjeta",
+            "numeroTarjeta": "9012 3456 7890 1234"
+        },
+        "metodoEnvio": "economico",
+        "productoID": 4
+    },
+    {
+        "id": 5,
+        "nroOrden": 747,
+        "usuario": "Pepe Mago",
+        "fecOrden": "05/05/2024",
+        "total": "S/ 5.00",
+        "correo": "pepe@gmail.com",
+        "estado": "Entregado",
+        "accion": "Ver",
+        "productos": 2,
+        "direccion": "Dirección 17",
+        "dir_envio": {
+          "linea1": "654 Calle Mayor",
+          "linea2": "",
+          "distrito": "Surco",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "tarjeta",
+            "numeroTarjeta": "9012 3456 7890 1234"
+        },
+        "metodoEnvio": "economico",
+        "productoID": 5
+    },
+    {
+        "id": 6,
+        "nroOrden": 6,
+        "usuario": "Laura Ramírez",
+        "fecOrden": "06/05/2024",
+        "total": "S/ 90.00",
+        "correo": "laura@example.com",
+        "estado": "En proceso",
+        "accion": "Ver",
+        "productos": 8,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "987 Avenida Principal",
+          "linea2": "Piso 3",
+          "distrito": "Los Olivos",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 1
+    },
+    {
+        "id": 7,
+        "nroOrden": 7,
+        "usuario": "David Rodríguez",
+        "fecOrden": "07/05/2024",
+        "total": "S/ 110.00",
+        "correo": "david@example.com",
+        "estado": "Pendiente",
+        "accion": "Ver",
+        "productos": 6,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "135 Calle Secundaria",
+          "linea2": "Apartamento 15-B",
+          "distrito": "San Borja",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 2
+    },
+    {
+        "id": 8,
+        "nroOrden": 8,
+        "usuario": "Elena Sánchez",
+        "fecOrden": "08/05/2024",
+        "total": "S/ 95.00",
+        "correo": "elena@example.com",
+        "estado": "En proceso",
+        "accion": "Ver",
+        "productos": 15,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "246 Avenida del Centro",
+          "linea2": "",
+          "distrito": "Surquillo",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 3
+    },
+    {
+        "id": 9,
+        "nroOrden": 9,
+        "usuario": "Fernando García",
+        "fecOrden": "09/05/2024",
+        "total": "S/ 65.00",
+        "correo": "fernando@example.com",
+        "estado": "Entregado",
+        "accion": "Ver",
+        "productos": 2,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "579 Calle de la Plaza",
+          "linea2": "Piso 4, Apartamento C",
+          "distrito": "Magdalena del Mar",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 4
+    },
+    {
+        "id": 10,
+        "nroOrden": 10,
+        "usuario": "Sara Fernández",
+        "fecOrden": "10/05/2024",
+        "total": "S/ 150.00",
+        "correo": "sara@example.com",
+        "estado": "Entregado",
+        "accion": "Ver",
+        "productos": 11,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "864 Avenida Sur",
+          "linea2": "",
+          "distrito": "Jesus María",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 5
+    },
+    {
+        "id": 11,
+        "nroOrden": 11,
+        "usuario": "Pedro Díaz",
+        "fecOrden": "11/05/2024",
+        "total": "S/ 70.00",
+        "correo": "pedro@example.com",
+        "estado": "Cancelado",
+        "accion": "Ver",
+        "productos": 9,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "123 Calle Este",
+          "linea2": "",
+          "distrito": "Pueblo Libre",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 1
+    },
+    {
+        "id": 12,
+        "nroOrden": 12,
+        "usuario": "Lucía Alonso",
+        "fecOrden": "12/05/2024",
+        "total": "S/ 85.00",
+        "correo": "lucia@example.com",
+        "estado": "Pendiente",
+        "accion": "Ver",
+        "productos": 4,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "456 Avenida Oeste",
+          "linea2": "Torre Norte, Piso 12",
+          "distrito": "Chorrillos",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 2
+    },
+    {
+        "id": 13,
+        "nroOrden": 13,
+        "usuario": "Alejandro Moreno",
+        "fecOrden": "13/05/2024",
+        "total": "S/ 105.00",
+        "correo": "alejandro@example.com",
+        "estado": "En proceso",
+        "accion": "Ver",
+        "productos": 13,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "789 Calle de la Playa",
+          "linea2": "",
+          "distrito": "San Miguel",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 3
+    },
+    {
+        "id": 14,
+        "nroOrden": 14,
+        "usuario": "Carmen Torres",
+        "fecOrden": "14/05/2024",
+        "total": "S/ 120.00",
+        "correo": "carmen@example.com",
+        "estado": "Entregado",
+        "accion": "Ver",
+        "productos": 7,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "321 Calle del Campo",
+          "linea2": "Piso 6",
+          "distrito": "Villa El Salvador",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 4
+    },
+    {
+        "id": 15,
+        "nroOrden": 15,
+        "usuario": "Javier Ruiz",
+        "fecOrden": "15/05/2024",
+        "total": "S/ 130.00",
+        "correo": "javier@example.com",
+        "estado": "Pendiente",
+        "accion": "Ver",
+        "productos": 15,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "654 Avenida Industrial",
+          "linea2": "Edificio 3, Piso 8",
+          "distrito": "Puente Piedra",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 5
+    },
+    {
+        "id": 16,
+        "nroOrden": 16,
+        "usuario": "Luisa Blanco",
+        "fecOrden": "16/05/2024",
+        "total": "S/ 45.00",
+        "correo": "luisa@example.com",
+        "estado": "En proceso",
+        "accion": "Ver",
+        "productos": 3,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "987 Calle Comercial",
+          "linea2": "",
+          "distrito": "Lurín",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 1
+    },
+    {
+        "id": 17,
+        "nroOrden": 17,
+        "usuario": "Raul Jiménez",
+        "fecOrden": "17/05/2024",
+        "total": "S/ 55.00",
+        "correo": "raul@example.com",
+        "estado": "Entregado",
+        "accion": "Ver",
+        "productos": 6,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "135 Avenida del Parque",
+          "linea2": "Piso 2, Apartamento A",
+          "distrito": "Rímac",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 2
+    },
+    {
+        "id": 18,
+        "nroOrden": 18,
+        "usuario": "Natalia Gutiérrez",
+        "fecOrden": "18/05/2024",
+        "total": "S/ 115.00",
+        "correo": "natalia@example.com",
+        "estado": "Pendiente",
+        "accion": "Ver",
+        "productos": 14,
+        "direccion": "Dirección 18",
+        "dir_envio": {
+          "linea1": "246 Calle Residencial",
+          "linea2": "",
+          "distrito": "La Victoria",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "qr"
+        },
+        "metodoEnvio": "prioritario",
+        "productoID": 3
+    },
+    {
+        "id": 19,
+        "nroOrden": 19,
+        "usuario": "Pablo Navarro",
+        "fecOrden": "19/05/2024",
+        "total": "S/ 140.00",
+        "correo": "pablo@example.com",
+        "estado": "Cancelado",
+        "accion": "Ver",
+        "productos": 8,
+        "direccion": "Dirección 17",
+        "dir_envio": {
+          "linea1": "579 Avenida del Estadio",
+          "linea2": "Piso 7",
+          "distrito": "Ate Vitarte",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "tarjeta",
+            "numeroTarjeta": "9012 3456 7890 1234"
+        },
+        "metodoEnvio": "economico",
+        "productoID": 4
+    },
+    {
+        "id": 20,
+        "nroOrden": 20,
+        "usuario": "Eva Hernández",
+        "fecOrden": "20/05/2024",
+        "total": "S/ 160.00",
+        "correo": "eva@example.com",
+        "estado": "En proceso",
+        "accion": "Ver",
+        "productos": 5,
+        "direccion": "Dirección 17",
+        "dir_envio": {
+          "linea1": "864 Calle del Paseo",
+          "linea2": "",
+          "distrito": "Santa Anita",
+          "ciudad": "Lima",
+          "país": "Perú"
+        },
+        "metodoPago": {
+            "tipo": "tarjeta",
+            "numeroTarjeta": "9012 3456 7890 1234"
+        },
+        "metodoEnvio": "economico",
+        "productoID": 5
+    }
+  ]
+  

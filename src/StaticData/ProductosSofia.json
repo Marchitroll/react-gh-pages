@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "cantItems": 2,
+        "Items": [
+            {"nombre":"Poster One Piece", "precio": 10},
+            {"nombre":"Figurita de Goku", "precio": 50}
+        ],
+        "fecha": "10/05/2024",
+        "NumeroOrden": 7,
+        "Direccion": "Av.La Molina"
+    },
+    {
+        "id": 2,
+        "cantItems": 2,
+        "Items": [
+            {"nombre":"Camiseta de Naruto", "precio": 20},
+            {"nombre":"Taza de Pikachu", "precio": 15}
+        ],
+        "fecha": "15/05/2024",
+        "NumeroOrden": 8,
+        "Direccion": "Av. Alfonso Ugarte"
+    },
+    {
+        "id": 3,
+        "cantItems": 3,
+        "Items": [
+            {"nombre":"Libro de Harry Potter", "precio": 25},
+            {"nombre":"Peluche de Hello Kitty", "precio": 30},
+            {"nombre":"Llavero de Spiderman", "precio": 8}
+        ],
+        "fecha": "20/05/2024",
+        "NumeroOrden": 9,
+        "Direccion": "Av. La Marina"
+    },
+    {
+        "id": 4,
+        "cantItems": 1,
+        "Items": [
+            {"nombre":"Póster de Attack on Titan", "precio": 12}
+        ],
+        "fecha": "1/05/2024",
+        "NumeroOrden": 10,
+        "Direccion": "Av. Bolognesi"
+    },
+    {
+        "id": 5,
+        "cantItems": 2,
+        "Items": [
+            {"nombre":"Funko Pop de Darth Vader", "precio": 18},
+            {"nombre":"Manga de Dragon Ball", "precio": 10}
+        ],
+        "fecha": "2/05/2024",
+        "NumeroOrden": 11,
+        "Direccion": "Av. Aviacion"
+    }
+]

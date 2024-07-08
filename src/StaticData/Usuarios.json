@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "nombre": "Juan",
+        "apellido": "Pérez",
+        "correo": "goku@example.com",
+        "fechaRegistro": "2023-05-10",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 2,
+        "nombre": "María",
+        "apellido": "Gómez",
+        "correo": "maria@example.com",
+        "fechaRegistro": "2023-06-15",
+        "estado": "Inactivo",
+        "accion": "Eliminar"
+    },
+    {
+        "id": 3,
+        "nombre": "Carlos",
+        "apellido": "López",
+        "correo": "carlos@example.com",
+        "fechaRegistro": "2023-07-20",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 4,
+        "nombre": "Ana",
+        "apellido": "Martínez",
+        "correo": "ana@example.com",
+        "fechaRegistro": "2023-08-25",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 5,
+        "nombre": "Pepe",
+        "apellido": "Mago",
+        "correo": "pepe@gmail.com",
+        "fechaRegistro": "2001-08-35",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 6,
+        "nombre": "Laura",
+        "apellido": "Ramírez",
+        "correo": "laura@example.com",
+        "fechaRegistro": "2023-09-30",
+        "estado": "Inactivo",
+        "accion": "Eliminar"
+    },
+    {
+        "id": 7,
+        "nombre": "David",
+        "apellido": "Rodríguez",
+        "correo": "david@example.com",
+        "fechaRegistro": "2023-10-05",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 8,
+        "nombre": "Elena",
+        "apellido": "Sánchez",
+        "correo": "elena@example.com",
+        "fechaRegistro": "2023-11-10",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 9,
+        "nombre": "Fernando",
+        "apellido": "García",
+        "correo": "fernando@example.com",
+        "fechaRegistro": "2023-12-15",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 10,
+        "nombre": "Sara",
+        "apellido": "Fernández",
+        "correo": "sara@example.com",
+        "fechaRegistro": "2024-01-20",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 11,
+        "nombre": "Pedro",
+        "apellido": "Díaz",
+        "correo": "pedro@example.com",
+        "fechaRegistro": "2024-02-25",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 12,
+        "nombre": "Lucía",
+        "apellido": "Alonso",
+        "correo": "lucia@example.com",
+        "fechaRegistro": "2024-03-30",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 13,
+        "nombre": "Alejandro",
+        "apellido": "Moreno",
+        "correo": "alejandro@example.com",
+        "fechaRegistro": "2024-04-05",
+        "estado": "Inactivo",
+        "accion": "Eliminar"
+    },
+    {
+        "id": 14,
+        "nombre": "Carmen",
+        "apellido": "Torres",
+        "correo": "carmen@example.com",
+        "fechaRegistro": "2024-05-10",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 15,
+        "nombre": "Javier",
+        "apellido": "Ruiz",
+        "correo": "javier@example.com",
+        "fechaRegistro": "2024-06-15",
+        "estado": "Inactivo",
+        "accion": "Eliminar"
+    },
+    {
+        "id": 16,
+        "nombre": "Luisa",
+        "apellido": "Blanco",
+        "correo": "luisa@example.com",
+        "fechaRegistro": "2024-07-20",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 17,
+        "nombre": "Raul",
+        "apellido": "Jiménez",
+        "correo": "raul@example.com",
+        "fechaRegistro": "2024-08-25",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 18,
+        "nombre": "Natalia",
+        "apellido": "Gutiérrez",
+        "correo": "natalia@example.com",
+        "fechaRegistro": "2024-09-30",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 19,
+        "nombre": "Pablo",
+        "apellido": "Navarro",
+        "correo": "pablo@example.com",
+        "fechaRegistro": "2024-10-05",
+        "estado": "Activo",
+        "accion": "Editar"
+    },
+    {
+        "id": 20,
+        "nombre": "Eva",
+        "apellido": "Hernández",
+        "correo": "eva@example.com",
+        "fechaRegistro": "2024-11-10",
+        "estado": "Activo",
+        "accion": "Editar"
+    }
+]
