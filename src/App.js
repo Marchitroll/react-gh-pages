@@ -3,6 +3,7 @@ import Rutas from './Router/Rutas';
 import { ThemeProvider, CssBaseline } from "@mui/material"
 import { temaClaro, temaOscuro } from './theme/Temas';
 import useLocalStorage from 'use-local-storage';
+import { RouterProvider } from 'react-router-dom';
 
 let usuarios = [
   {
@@ -218,7 +219,7 @@ function App() {
   return (
     <ThemeProvider theme={tema === "light" ? temaClaro : temaOscuro}>
       <CssBaseline />
-      <Rutas />
+      <RouterProvider router={ Rutas()} />
     </ThemeProvider>
   );
 }

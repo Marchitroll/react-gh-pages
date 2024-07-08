@@ -70,25 +70,39 @@ export default function SearchAppBar() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [searched, setSearched] = useState(false);
+  const [noResults, setNoResults] = useState(false); // Estado para controlar si no hay resultados
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
+    setNoResults(false); // Resetear el estado cuando se cambia el input
   };
 
   const handleSearch = async () => {
     try {
-        const response = await fetch(`https://backendgrupo4.azurewebsites.net/anime?nombre=${query}`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+      const response = await fetch(`https://backendgrupo4.azurewebsites.net/anime/nombre/${query}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      if (data.length > 0) {
         setResults(data);
         setSearched(true);
+        setNoResults(false); // Reiniciar el estado si hay resultados
+      } else {
+        setResults([]);
+        setSearched(true);
+        setNoResults(true); // Establecer el estado si no hay resultados
+      }
     } catch (error) {
-        console.error('Error searching anime:', error);
+      console.error('Error searching anime:', error);
     }
-};
+  };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -105,6 +119,7 @@ export default function SearchAppBar() {
                 inputProps={{ 'aria-label': 'search' }}
                 value={query}
                 onChange={handleInputChange}
+                onKeyPress={handleKeyPress}
               />
             </Search>
             <Button
@@ -118,19 +133,20 @@ export default function SearchAppBar() {
         </Toolbar>
       </AppBar>
       <Box sx={{ p: 2 }}>
-        {searched && results.length === 0 ? (
+        {searched && noResults ? (
           <NoResultsContainer>
-            <Typography variant="body1">No se encontraron animes</Typography>
+            <Typography variant="body1">{`No hay resultados para "${query}"`}</Typography>
           </NoResultsContainer>
         ) : (
           <Grid container spacing={2} justifyContent="center">
             {results.map((anime) => (
               <Grid item key={anime.id}>
                 <ItemCard
+                  id={anime.id}
                   title={anime.nombre}
                   description={anime.genero}
                   imageUrl={anime.urlImagen}
-                  onLearnMore={() => alert(`Más información sobre: ${anime.title}`)}
+                  onLearnMore={() => alert(`Más información sobre: ${anime.nombre}`)}
                 />
               </Grid>
             ))}

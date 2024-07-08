@@ -49,7 +49,7 @@ export default function CuerpoAlva2() {
         </Typography>
       </Box>
       <Grid container spacing={4} justifyContent="center">
-        {items.slice(19, 22).map((item, index) => (
+        {items.slice(20, 23).map((item, index) => (
           <Grid item key={`item-top-${index}`} xs={12} sm={6} md={4}>
             <ItemCard
               id={item.id} // Asumiendo que item tiene un campo id único
@@ -82,33 +82,18 @@ export default function CuerpoAlva2() {
         <Typography variant="h5" component="div" gutterBottom>
           NUEVOS
         </Typography>
-        <Grid container spacing={2} justifyContent="flex-start" alignItems="flex-start">
-          <Grid item xs={12} md={8}>
-            {nuevosItems.length > 0 && (
+        <Grid container spacing={4} justifyContent="center">
+          {items.slice(116, 119).map((item, index) => (
+            <Grid item key={`item-top-${index}`} xs={12} sm={6} md={4}>
               <ItemCard
-                id={nuevosItems[0].id} // Asumiendo que nuevosItems tiene un campo id único
-                title={nuevosItems[0].nombre}
-                description={nuevosItems[0].genero}
-                imageUrl={nuevosItems[0].urlImagen}
-                onLearnMore={() => handleLearnMore(nuevosItems[0].title)}
+                id={item.id} // Asumiendo que item tiene un campo id único
+                title={item.nombre}
+                description={item.genero}
+                imageUrl={item.urlImagen}
+                onLearnMore={() => handleLearnMore(item.title)}
               />
-            )}
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Grid container spacing={2} direction="column">
-              {nuevosItems.slice(15, 17).map((item, index) => (
-                <Grid item key={`nuevo-item-top-${index}`} xs={12}>
-                  <ItemCard
-                    id={item.id} // Asumiendo que nuevosItems tiene un campo id único
-                    title={item.nombre}
-                    description={item.genero}
-                    imageUrl={item.urlImagen}
-                    onLearnMore={() => handleLearnMore(item.title)}
-                  />
-                </Grid>
-              ))}
             </Grid>
-          </Grid>
+          ))}
         </Grid>
       </Box>
 

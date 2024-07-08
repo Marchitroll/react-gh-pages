@@ -7,8 +7,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 
 export default function ItemCard({ id, title, description, imageUrl }) {
+  const theme = useTheme();
+
+  // Define text color based on theme
+  const textColor = theme.palette.mode === 'dark' ? '#ffffff' : '#000000';
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -18,17 +24,17 @@ export default function ItemCard({ id, title, description, imageUrl }) {
         alt={title}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: '1.0rem', fontWeight: 'bold' }}>
+        <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: '1.0rem', fontWeight: 'bold', color: textColor }}>
           {title}
         </Typography>
-        <Typography variant="body2" sx={{ fontSize: '1.0rem', color: 'black' }}>
+        <Typography variant="body2" sx={{ fontSize: '1.0rem', color: textColor }}>
           {description}
         </Typography>
       </CardContent>
       <CardActions>
         <Button
           size="small"
-          sx={{ color: 'black', fontSize: '0.55rem' }}
+          sx={{ color: textColor, fontSize: '0.55rem' }}
           aria-label={`Learn more about ${title}`}
           component={Link}
           to={`/detalle/${id}`}
@@ -45,8 +51,4 @@ ItemCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
-};
-
-ItemCard.defaultProps = {
-  onLearnMore: () => {},
 };

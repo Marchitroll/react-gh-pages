@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Box, Typography, Grid, Button } from '@mui/material';
-import BarraCompleta from '../../BarraCompleta'; 
-import PieDePaginaTODOS from '../../PieDePaginaTODOS'; 
+import BarraCompleta from '../../BarraCompleta';
+import PieDePaginaTODOS from '../../PieDePaginaTODOS';
 
 function PaginaProducto() {
   const { id } = useParams();
   const [anime, setAnime] = useState(null);
-  const [cantidad, setCantidad] = useState(1); // Estado para la cantidad
+  const [cantidad, setCantidad] = useState(1);
+  const [casaAnimadora, setCasaAnimadora] = useState('');
 
   useEffect(() => {
     const fetchAnime = async () => {
@@ -23,7 +24,23 @@ function PaginaProducto() {
       }
     };
 
+    const fetchCasaAnimadora = async () => {
+      try {
+        const response = await fetch(`https://backendgrupo4.azurewebsites.net/anime/${id}/casas-animadoras`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        if (data.length > 0) {
+          setCasaAnimadora(data[0].nombre); // Ajusta según la estructura de tu respuesta
+        }
+      } catch (error) {
+        console.error('Error fetching casa animadora data:', error);
+      }
+    };
+
     fetchAnime();
+    fetchCasaAnimadora();
   }, [id]);
 
   const incrementarCantidad = () => {
@@ -37,26 +54,24 @@ function PaginaProducto() {
   };
 
   const addToCart = () => {
-    // Aquí podrías implementar la lógica para añadir el anime al carrito
-    // Por ejemplo, podrías enviar los datos al backend o almacenarlos localmente
-    console.log(`Añadiendo ${cantidad} unidad(es) de ${anime.nombre} al carrito`);
+    window.alert(`${cantidad} unidad(es) de "${anime.nombre}" añadido(s) al carrito`);
   };
 
   if (!anime) {
-    return <div>Loading...</div>; // Puedes mostrar un spinner o mensaje de carga mientras se obtiene la información
+    return <div>Loading...</div>;
   }
 
   return (
     <>
       <br />
       <br />
-      <BarraCompleta /> {/* Agrega el Header */}
+      <BarraCompleta />
       <Container sx={{ py: 5 }} maxWidth="lg">
         <Typography variant="h4" component="div" gutterBottom>
           {anime.nombre}
         </Typography>
         <Typography variant="subtitle1" component="div" gutterBottom>
-          Por: {anime.vendedor} - Serie: {anime.serie}
+          Por: {casaAnimadora} 
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
@@ -70,7 +85,7 @@ function PaginaProducto() {
                 DISPONIBLE
               </Typography>
               <Typography variant="h4" component="div" gutterBottom>
-                $ {anime.precio}
+                S/ {anime.precio}
               </Typography>
               <Button variant="contained" color="primary" sx={{ mb: 2 }} onClick={addToCart}>
                 AÑADIR AL CARRITO
@@ -102,12 +117,11 @@ function PaginaProducto() {
             <ul>
               <li>Número de episodios: {anime.numeroEpisodios}</li>
               <li>Géneros: {anime.genero}</li>
-              {/* Agrega las demás características según la estructura de tu objeto anime */}
             </ul>
           </Typography>
         </Box>
       </Container>
-      <PieDePaginaTODOS /> {/* Agrega el Footer */}
+      <PieDePaginaTODOS />
     </>
   );
 }

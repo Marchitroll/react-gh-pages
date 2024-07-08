@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+
+import { createHashRouter } from "react-router-dom"
 import ContraseniaOlvidada from '../Componentes/Usuario/Sofia/ContraseñaOlvidada.jsx';
 import CrearCuenta from '../Componentes/Usuario/Sofia/CrearCuenta.jsx';
 import DetalleProducto from '../Componentes/Administrador/Marcelo/DetalleProducto.jsx';
@@ -17,27 +17,101 @@ import AgregarProducto from '../Componentes/Administrador/Marcelo/AgregarProduct
 import PaginaProducto from '../Componentes/Usuario/Alvaro/PaginaProducto.jsx';
 
 const Rutas = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<PaginaPrincipal />} />
-        <Route path='/admin' element={<PaginaPrincipalAdmin />} />
-        <Route path='/detalleUsuario/:id' element={<UserDetail />} />
-        <Route path='/detalleOrden/:id' element={<OrderDetail />} />
-        <Route path='/parte1' element={<PaginaSebas1 />} />
-        <Route path='/parte2' element={<PaginaSebas2 />} />
-        <Route path='/parte3' element={<PaginaSebas3 />} />
-        <Route path='/login' element={<IniciarSesion />} />
-        <Route path='/crearCuenta' element={<CrearCuenta />} />
-        <Route path='/contraseñaOlvidada' element={<ContraseniaOlvidada />} />
-        <Route path='/PaginaPrincipalUsuario/:id' element={<PaginaPrincipalUsuario />} />
-        <Route path='/ordenesRecientes' element={<OrdenesRecientes />} />
-        <Route path='/detalleProducto/:id' element={<DetalleProducto />} />
-        <Route path='/agregarProducto' element={<AgregarProducto />} />
-        <Route path="/detalle/:id" element={<PaginaProducto />} />
-      </Routes>
-    </Router>
-  );
+  return createHashRouter([
+    {
+      path: "/",
+      element: <PaginaPrincipal />
+    },
+    {
+      path: "/admin",
+      element: <PaginaPrincipalAdmin />
+    },
+    {
+      path: '/detalleUsuario/:id',
+      element: <UserDetail />
+    },
+    {
+      path: '/detalleOrden/:id',
+      element: <OrderDetail />
+    },
+    {
+      path: '/detalleOrden/:id',
+      element: <OrderDetail />
+    },
+    {
+      path: '/parte1',
+      element: <PaginaSebas1 />
+    },
+    {
+      path: "/parte2",
+      element: <PaginaSebas2 />
+    },
+    {
+      path: "/parte3",
+      element: <PaginaSebas3 />
+    },
+    {
+      path: "/login",
+      element: <IniciarSesion />
+    },
+    {
+      path: "/crearCuenta",
+      element: <CrearCuenta />
+    },
+    {
+      path: "/crearCuenta",
+      element: <CrearCuenta />
+    },
+    {
+      path: "/contraseñaOlvidada",
+      element: <ContraseniaOlvidada />
+    },
+    {
+      path: "/PaginaPrincipalUsuario/:id",
+      element: <PaginaPrincipalUsuario />
+    },
+    {
+      path: "/ordenesRecientes",
+      element: <OrdenesRecientes />
+    },
+    {
+      path: "/detalleProducto/:id",
+      element: <DetalleProducto />
+    },
+    {
+      path: "/agregarProducto",
+      element: <AgregarProducto />
+    },
+    {
+      path: "/detalle/:id",
+      element: <PaginaProducto />
+    },
+  ])
 }
 
-export default Rutas;
+export default Rutas
+// const Rutas = () => {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path='/' element={<PaginaPrincipal />} />
+//         <Route path='/admin' element={<PaginaPrincipalAdmin />} />
+//         <Route path='/detalleUsuario/:id' element={<UserDetail />} />
+//         <Route path='/detalleOrden/:id' element={<OrderDetail />} />
+//         <Route path='/parte1' element={<PaginaSebas1 />} />
+//         <Route path='/parte2' element={<PaginaSebas2 />} />
+//         <Route path='/parte3' element={<PaginaSebas3 />} />
+//         <Route path='/login' element={<IniciarSesion />} />
+//         <Route path='/crearCuenta' element={<CrearCuenta />} />
+//         <Route path='/contraseñaOlvidada' element={<ContraseniaOlvidada />} />
+//         <Route path='/PaginaPrincipalUsuario/:id' element={<PaginaPrincipalUsuario />} />
+//         <Route path='/ordenesRecientes' element={<OrdenesRecientes />} />
+//         <Route path='/detalleProducto/:id' element={<DetalleProducto />} />
+//         <Route path='/agregarProducto' element={<AgregarProducto />} />
+//         <Route path="/detalle/:id" element={<PaginaProducto />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default Rutas;
