@@ -5,7 +5,6 @@ import {
   Button,
   CssBaseline,
   TextField,
-  Link,
   Grid,
   Box,
   Typography,
@@ -16,6 +15,7 @@ import { Person as PersonIcon } from '@mui/icons-material';
 import { createTheme } from '@mui/material/styles';
 import BarraDeNavegacion from '../../BarraCompleta';
 import Baja from '../../PieDePaginaTODOS';
+import { Link } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
@@ -60,13 +60,13 @@ const IniciarSesion = () => {
     }
   };
 
-  const handleCorreoChange = (event) => {
-    setCorreo(event.target.value);
-    setError(false);
-  };
-
-  const handleContraseniaChange = (event) => {
-    setContrasenia(event.target.value);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'correo') {
+      setCorreo(value);
+    } else if (name === 'contrasenia') {
+      setContrasenia(value);
+    }
     setError(false);
   };
 
@@ -112,7 +112,7 @@ const IniciarSesion = () => {
                 Ingreso para nuevos usuarios
               </Typography>
 
-              <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%' }}>
+              <form onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%' }}>
                 <TextField
                   margin="normal"
                   required
@@ -123,7 +123,7 @@ const IniciarSesion = () => {
                   autoComplete="correo"
                   autoFocus
                   value={correo}
-                  onChange={handleCorreoChange}
+                  onChange={handleInputChange}
                 />
                 <TextField
                   margin="normal"
@@ -135,7 +135,7 @@ const IniciarSesion = () => {
                   id="contrasenia"
                   autoComplete="current-password"
                   value={contrasenia}
-                  onChange={handleContraseniaChange}
+                  onChange={handleInputChange}
                 />
                 {error && <Typography variant="body2" color="error" align="center">{errorMensaje}</Typography>}
                 <Button
@@ -148,17 +148,17 @@ const IniciarSesion = () => {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="/ContraseñaOlvidada" variant="body2">
+                    <Link to="/ContraseñaOlvidada" variant="body2">
                       Olvidé mi contraseña
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Link href="/crearCuenta#/crearcuenta" variant="body2">
-                      {"Crear nueva cuenta"}
+                    <Link to="/crearCuenta" variant="body2">
+                      Crear cuenta
                     </Link>
                   </Grid>
                 </Grid>
-              </Box>
+              </form>
 
             </Box>
           </Container>

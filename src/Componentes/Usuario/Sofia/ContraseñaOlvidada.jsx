@@ -1,24 +1,27 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Typography,
+  Container,
+  createTheme,
+  ThemeProvider
+} from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import BarraDeNavegacion from '../../BarraCompleta';
 import Baja from '../../PieDePaginaTODOS';
+import { Link } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 function ContraseniaOlvidada() {
-  const [correo, setCorreo] = React.useState('');
-  const [correoError, setCorreoError] = React.useState(false);
-  const [correoEnviado, setCorreoEnviado] = React.useState(false);
+  const [correo, setCorreo] = useState('');
+  const [correoError, setCorreoError] = useState(false);
+  const [correoEnviado, setCorreoEnviado] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,7 +38,7 @@ function ContraseniaOlvidada() {
       }
       const usuarios = await response.json();
 
-      const usuarioEncontrado = usuarios.find(usuario => usuario.email === correo);
+      const usuarioEncontrado = usuarios.find(usuario => usuario.correo === correo);
 
       if (usuarioEncontrado) {
         alert(`La contraseña para el correo ${correo} es: ${usuarioEncontrado.contrasenia}`);
@@ -70,7 +73,6 @@ function ContraseniaOlvidada() {
           sx={{
             backgroundColor: '#EFC4EB',
             minHeight: '80vh',
-            width: '100%',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -81,26 +83,21 @@ function ContraseniaOlvidada() {
             <Box
               sx={{
                 paddingTop: '100px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
                 backgroundColor: 'white',
                 padding: '20px',
                 borderRadius: '5px',
                 marginTop: '50px',
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
-                  <LockOutlinedIcon color="white" />
-                </Avatar>
-              </Box>
+              <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+                <LockOutlinedIcon color="white" />
+              </Avatar>
 
-              <Typography component="h1" variant="h5" style={{ textAlign: 'center', margin: '10px auto' }}>
+              <Typography component="h1" variant="h5" sx={{ textAlign: 'center', mt: 2 }}>
                 Ingrese su correo para enviar la contraseña
               </Typography>
 
-              <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%' }}>
+              <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 2 }}>
                 <TextField
                   margin="normal"
                   required
@@ -116,7 +113,7 @@ function ContraseniaOlvidada() {
                   onChange={handleChange}
                 />
                 {correoEnviado && (
-                  <Typography variant="body2" sx={{ color: 'success.main', mt: 1, marginLeft: '10px' }}>
+                  <Typography variant="body2" sx={{ color: 'success.main', mt: 1 }}>
                     Correo enviado exitosamente
                   </Typography>
                 )}
@@ -124,14 +121,14 @@ function ContraseniaOlvidada() {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 2 }}
                 >
                   Enviar
                 </Button>
 
-                <Grid container justifyContent={"center"}>
+                <Grid container justifyContent="center" sx={{ mt: 2 }}>
                   <Grid item>
-                    <Link href="/login" variant="body2">
+                    <Link to="/login" variant="body2">
                       Regresar a Iniciar Sesión
                     </Link>
                   </Grid>
@@ -141,6 +138,7 @@ function ContraseniaOlvidada() {
           </Container>
         </Box>
       </ThemeProvider>
+
       <Baja />
     </>
   );

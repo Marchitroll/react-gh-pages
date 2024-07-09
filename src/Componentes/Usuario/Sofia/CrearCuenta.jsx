@@ -5,7 +5,6 @@ import {
   Button,
   CssBaseline,
   TextField,
-  Link,
   Grid,
   Box,
   Typography,
@@ -16,6 +15,7 @@ import { HowToRegRounded as HowToRegRoundedIcon } from '@mui/icons-material';
 import { createTheme } from '@mui/material/styles';
 import BarraDeNavegacion from '../../BarraCompleta';
 import Baja from '../../PieDePaginaTODOS';
+import { Link } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
@@ -47,6 +47,19 @@ const CrearCuenta = () => {
     }
 
     try {
+      // Verificar si el correo ya existe en la base de datos
+      const response = await fetch('https://backendgrupo4.azurewebsites.net/usuario');
+      if (!response.ok) {
+        throw new Error('Error al obtener los usuarios');
+      }
+      const usuarios = await response.json();
+
+      const correoExistente = usuarios.some(usuario => usuario.correo === correo);
+      if (correoExistente) {
+        setErrorCorreoExistente(true);
+        return;
+      }
+
       const nuevoUsuario = {
         nombre: data.get('primerNombre'),
         apellido: data.get('apellido'),
@@ -74,11 +87,15 @@ const CrearCuenta = () => {
         throw new Error('Error al crear el usuario');
       }
 
-      // Mostrar mensaje de éxito y redirigir al inicio de sesión
+      // Obtener el ID del nuevo usuario creado
+      const usuarioCreadoData = await crearUsuarioResponse.json();
+      const nuevoUsuarioId = usuarioCreadoData.id;
+
+      // Mostrar mensaje de éxito y redirigir a la página principal del usuario
       setUsuarioCreado(true);
       localStorage.setItem('usuario', JSON.stringify({ correo }));
       setTimeout(() => {
-        navigate('/');
+        navigate(`/PaginaPrincipalUsuario/${nuevoUsuarioId}`);
       }, 2000);
     } catch (error) {
       console.error('Error:', error);
@@ -203,7 +220,7 @@ const CrearCuenta = () => {
                 </Grid>
                 {usuarioCreado && (
                   <Typography variant="body2" sx={{ color: 'success.main', mt: 2 }}>
-                    Usuario creado exitosamente... Redirigiendo al inicio de sesión
+                    Usuario creado exitosamente... Redirigiendo
                   </Typography>
                 )}
                 <Button
@@ -216,8 +233,8 @@ const CrearCuenta = () => {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                    <Link href="/login#/login" variant="body2">
-                      {"¿Tienes una cuenta? Inicia Sesión"}
+                    <Link to="/" variant="body2">
+                      ¿Ya tienes una cuenta? Regresa al inicio
                     </Link>
                   </Grid>
                 </Grid>
