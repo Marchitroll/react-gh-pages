@@ -47,26 +47,12 @@ const CrearCuenta = () => {
     }
 
     try {
-      // Verificar si ya existe un usuario con el mismo correo en el backend
-      const response = await fetch('https://backendgrupo4.azurewebsites.net/usuario');
-      if (!response.ok) {
-        throw new Error('Error al obtener los usuarios');
-      }
-      const usuarios = await response.json();
-
-      const usuarioExistente = usuarios.find(user => user.correo === correo);
-      if (usuarioExistente) {
-        setErrorCorreoExistente(true);
-        return;
-      }
-
-      // Si el usuario no existe en el backend, proceder con el registro
       const nuevoUsuario = {
         nombre: data.get('primerNombre'),
         apellido: data.get('apellido'),
         correo: correo,
         contrasenia: contrasenia,
-        estado: "activo" // Puedes ajustar según tus necesidades
+        estadoUsuarioId: 1 // Estado activo por defecto
       };
 
       // Guardar el nuevo usuario en el backend
@@ -79,13 +65,20 @@ const CrearCuenta = () => {
       });
 
       if (!crearUsuarioResponse.ok) {
+        if (crearUsuarioResponse.status === 400) {
+          const errorData = await crearUsuarioResponse.json();
+          if (errorData.errors && errorData.errors.some(error => error.param === 'correo')) {
+            setErrorCorreoExistente(true);
+          }
+        }
         throw new Error('Error al crear el usuario');
       }
 
       // Mostrar mensaje de éxito y redirigir al inicio de sesión
       setUsuarioCreado(true);
+      localStorage.setItem('usuario', JSON.stringify({ correo }));
       setTimeout(() => {
-        navigate('/login');
+        navigate('/');
       }, 2000);
     } catch (error) {
       console.error('Error:', error);
@@ -223,7 +216,7 @@ const CrearCuenta = () => {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                    <Link href="/login" variant="body2">
+                    <Link href="/login#/login" variant="body2">
                       {"¿Tienes una cuenta? Inicia Sesión"}
                     </Link>
                   </Grid>

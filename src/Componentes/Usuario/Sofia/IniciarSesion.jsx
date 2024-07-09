@@ -32,7 +32,7 @@ const IniciarSesion = () => {
     try {
       const response = await fetch('https://backendgrupo4.azurewebsites.net/usuario');
       if (!response.ok) {
-        throw new Error('Error al obtener los usuarios');
+        throw new Error('Error al obtener usuarios');
       }
       const usuarios = await response.json();
 
@@ -41,12 +41,12 @@ const IniciarSesion = () => {
       );
 
       if (usuarioValido) {
-        if (usuarioValido.estadoUsuarioId === 2) {
+        if (usuarioValido.estadoUsuarioId === 0) {
           setError(true);
           setErrorMensaje('Usuario inactivo');
         } else {
           const usuarioEnSesion = { id: usuarioValido.id };
-          localStorage.setItem("usuarioEnSesion", JSON.stringify(usuarioEnSesion));
+          localStorage.setItem('usuarioEnSesion', JSON.stringify(usuarioEnSesion));
           navigate(`/PaginaPrincipalUsuario/${usuarioValido.id}`);
         }
       } else {
@@ -54,7 +54,7 @@ const IniciarSesion = () => {
         setErrorMensaje('Correo o contraseña incorrectos');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error al autenticar:', error);
       setError(true);
       setErrorMensaje('Error al intentar iniciar sesión');
     }
@@ -68,11 +68,6 @@ const IniciarSesion = () => {
   const handleContraseniaChange = (event) => {
     setContrasenia(event.target.value);
     setError(false);
-  };
-
-  const handleRegistro = () => {
-    // Implementa la lógica para registrar nuevos usuarios
-    navigate('/CrearCuenta'); // Redirige al formulario de registro
   };
 
   return (
@@ -151,10 +146,15 @@ const IniciarSesion = () => {
                 >
                   Ingresar
                 </Button>
-                <Grid container justifyContent="flex-end">
+                <Grid container>
+                  <Grid item xs>
+                    <Link href="/ContraseñaOlvidada" variant="body2">
+                      Olvidé mi contraseña
+                    </Link>
+                  </Grid>
                   <Grid item>
-                    <Link component="button" variant="body2" onClick={handleRegistro}>
-                      Crear nueva cuenta
+                    <Link href="/crearCuenta#/crearcuenta" variant="body2">
+                      {"Crear nueva cuenta"}
                     </Link>
                   </Grid>
                 </Grid>

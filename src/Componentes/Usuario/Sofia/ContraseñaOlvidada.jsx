@@ -20,15 +20,33 @@ function ContraseniaOlvidada() {
   const [correoError, setCorreoError] = React.useState(false);
   const [correoEnviado, setCorreoEnviado] = React.useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!validarCorreo(correo)) {
       setCorreoError(true);
       return;
     }
     setCorreoError(false);
-    setCorreoEnviado(true);
-    console.log({ correo });
+
+    try {
+      const response = await fetch('https://backendgrupo4.azurewebsites.net/usuario');
+      if (!response.ok) {
+        throw new Error('Error al obtener los usuarios');
+      }
+      const usuarios = await response.json();
+
+      const usuarioEncontrado = usuarios.find(usuario => usuario.email === correo);
+
+      if (usuarioEncontrado) {
+        alert(`La contraseña para el correo ${correo} es: ${usuarioEncontrado.contrasenia}`);
+        setCorreoEnviado(true);
+      } else {
+        alert('El correo no existe en la base de datos.');
+        setCorreoEnviado(false);
+      }
+    } catch (error) {
+      console.error('Error al recuperar la contraseña:', error);
+    }
   };
 
   const handleChange = (event) => {

@@ -1,105 +1,60 @@
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
-import MenuItem from '@mui/material/MenuItem';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import React from 'react';
-import TemaButton from "../theme/TemaButton";
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { AppBar, Box, Button, Container, IconButton, MenuItem, Toolbar, Typography } from '@mui/material';
+import { ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
+import { Link, useNavigate } from 'react-router-dom';
 import useLocalStorage from 'use-local-storage';
-import { Link } from 'react-router-dom';
+import TemaButton from "../theme/TemaButton";
+import MasterPassword from '../Componentes/Administrador/Marcelo/reto.jsx'; // Ajusta la ruta según sea necesario
+
+const sections = [
+    { label: 'Más vendidos', id: 'vendidos-section' },
+    { label: 'Nuevos', id: 'nuevos-section' },
+    { label: 'Ofertas', id: 'ofertas-section' },
+];
 
 function BarraCompleta() {
+    const [showMasterPassword, setShowMasterPassword] = useState(false);
     const navigate = useNavigate();
     const [, setTema] = useLocalStorage('tema_preferido');
 
-    // Cambia el tema entre "light" y "dark"
-    const handleThemeChange = () => {
-        setTema(prev => prev === "light" ? "dark" : "light");
-    };
-
-    // Navega a la página de checkout
-    const handleCheckout = () => {
-        navigate('/parte1');
-    };
-
-    // Navega a la página principal del usuario
+    const handleThemeChange = () => setTema(prev => prev === "light" ? "dark" : "light");
+    const handleCheckout = () => navigate('/parte1');
     const handleCuenta = () => {
-        const usuarioEnSesion = JSON.parse(localStorage.getItem("usuarioEnSesion")) || { id: 0 };
-        if (usuarioEnSesion.id === 0) {
-            navigate("/login");
-        } else {
-            navigate(`/PaginaPrincipalUsuario/${usuarioEnSesion.id}`);
-        }
+        const { id } = JSON.parse(localStorage.getItem("usuarioEnSesion")) || { id: 0 };
+        navigate(id === 0 ? "/login" : `/PaginaPrincipalUsuario/${id}`);
     };
 
-    // Navega a la página principal y desplaza la vista a la sección "Nuevos"
-    const handleScrollToNuevos = () => {
+    const handleScroll = (id) => {
         navigate('/');
-        setTimeout(() => {
-            const nuevosSection = document.getElementById('nuevos-section');
-            nuevosSection.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+        setTimeout(() => document.getElementById(id).scrollIntoView({ behavior: 'smooth' }), 100);
     };
 
-    // Navega a la página principal y desplaza la vista a la sección "Ofertas"
-    const handleScrollToOfertas = () => {
-        navigate('/');
-        setTimeout(() => {
-            const nuevosSection = document.getElementById('ofertas-section');
-            nuevosSection.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-    };
-
-    // Navega a la página principal y desplaza la vista a la sección "Más Vendidos"
-    const handleScrollToVendidos = () => {
-        navigate('/');
-        setTimeout(() => {
-            const nuevosSection = document.getElementById('vendidos-section');
-            nuevosSection.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-    };
-
-    // Redirige a una URL externa para la ayuda
-    const handleAyuda = () => {
-        window.location.href = "https://i.pinimg.com/originals/44/b6/7d/44b67d5e479d46f672031fb9ee0229cf.gif";
-    };
-
-    // Maneja el cierre de sesión
     const handleLogout = () => {
         localStorage.setItem("usuarioEnSesion", JSON.stringify({ id: 0 }));
         navigate('/');
     };
+
+    const handleSuccess = () => {
+        setShowMasterPassword(false);
+    };
+
+    if (showMasterPassword) {
+        return <MasterPassword onSuccess={handleSuccess} />;
+    }
 
     return (
         <AppBar position='fixed' sx={{ backgroundColor: "rgb(19, 25, 33)" }}>
             <Container>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <MenuItem>
-                            <Typography variant='h6' sx={{ color: "white", fontWeight: "bold", textDecoration: 'none', '&:hover': { textDecoration: 'none' } }} component={Link} to="/">
-                                TIENDA
-                            </Typography>
+                        <MenuItem component={Link} to="/" sx={{ color: "white", fontWeight: "bold" }}>
+                            <Typography variant='h6'>TIENDA</Typography>
                         </MenuItem>
-                        <MenuItem>
-                            <Typography variant='h6' sx={{ color: "white" }} onClick={handleScrollToVendidos}>
-                                Más vendidos
-                            </Typography>
-                        </MenuItem>
-                        <MenuItem>
-                            <Typography variant='h6' sx={{ color: "white", cursor: 'pointer' }} onClick={handleScrollToNuevos}>
-                                Nuevos
-                            </Typography>
-                        </MenuItem>
-                        <MenuItem>
-                            <Typography variant='h6' sx={{ color: "white" }} onClick={handleScrollToOfertas}>
-                                Ofertas
-                            </Typography>
-                        </MenuItem>
+                        {sections.map(({ label, id }) => (
+                            <MenuItem key={id} onClick={() => handleScroll(id)} sx={{ color: "white" }}>
+                                <Typography variant='h6'>{label}</Typography>
+                            </MenuItem>
+                        ))}
                     </Box>
                     <Box sx={{ display: 'flex' }}>
                         <MenuItem onClick={handleCheckout}>
@@ -112,18 +67,15 @@ function BarraCompleta() {
                                 <TemaButton />
                             </IconButton>
                         </MenuItem>
-                        <MenuItem>
-                            <Typography variant='h6' sx={{ color: "white" }} onClick={handleAyuda}>
-                                Ayuda
-                            </Typography>
-                        </MenuItem>
-                        <Button sx={{ backgroundColor: "#000000", borderColor: "#000000", color: "white", marginLeft: 2 }} onClick={handleLogout}>
+                        <Button sx={{ backgroundColor: "#000", color: "white", ml: 2 }} onClick={handleLogout}>
                             Cerrar sesión
                         </Button>
-                        <Button sx={{ backgroundColor: "#000000", borderColor: "#000000", color: "white", marginLeft: 2 }} onClick={handleCuenta}>
+                        <Button sx={{ backgroundColor: "#000", color: "white", ml: 2 }} onClick={handleCuenta}>
                             Mi cuenta
                         </Button>
-                        
+                        <Button sx={{ backgroundColor: "#000", color: "white", ml: 2 }} onClick={() => setShowMasterPassword(true)}>
+                            Admin reto
+                        </Button>
                     </Box>
                 </Toolbar>
             </Container>

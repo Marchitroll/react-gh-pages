@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Paper, TableHead, TableRow, TableBody, Table, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
 
 import Titulo from './Titulo';
 import { Search, SearchIconWrapper, StyledInputBase, TransparentTableContainer, TransparentTable, TransparentTableCell, FirstRowTableCell, PaginationContainer, CustomPagination } from './Estilos';
@@ -59,10 +60,6 @@ const ListaProductos = () => {
     const indiceInicio = (pagina - 1) * 15;
     const indiceFin = indiceInicio + 15;
 
-    const verDetalleProducto = (id) => {
-        window.open(`/detalleProducto/${id}`, '_blank');
-    };
-
     const alternarEstadoProducto = async (id) => {
         const producto = productos.find(producto => producto.id === id);
         if (producto) {
@@ -89,15 +86,11 @@ const ListaProductos = () => {
         }
     };
 
-    const agregarProducto = () => {
-        window.open('/agregarProducto', '_blank');
-    };
-
     return (
         <Container maxWidth="auto">
             <Grid container spacing={1.5}>
                 <Grid item xs={12}>
-                    <Titulo titulo="Productos"/>
+                    <Titulo titulo="Productos" />
                 </Grid>
 
                 <Grid item xs={12}>
@@ -141,8 +134,10 @@ const ListaProductos = () => {
                                             <TransparentTableCell>{producto.stock}</TransparentTableCell>
                                             <TransparentTableCell>{estadosAnime[producto.estadoAnimeId] || 'Desconocido'}</TransparentTableCell>
                                             <TransparentTableCell>
-                                                <Button variant="contained" onClick={() => verDetalleProducto(producto.id)}>Ver</Button>
-                                                <Button variant="contained" onClick={() => alternarEstadoProducto(producto.id)}>
+                                                <Button variant="contained" component={Link} to={`/detalleProducto/${producto.id}`} target="_blank">
+                                                    Ver
+                                                </Button>
+                                                <Button variant="contained" onClick={() => alternarEstadoProducto(producto.id)} style={{ marginLeft: 8 }}>
                                                     {estadosAnime[producto.estadoAnimeId] === 'Activo' ? 'Desactivar' : 'Activar'}
                                                 </Button>
                                             </TransparentTableCell>
@@ -155,7 +150,9 @@ const ListaProductos = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Button variant="contained" onClick={agregarProducto}>Agregar Producto</Button>
+                    <Button variant="contained" component={Link} to="/agregarProducto" target="_blank">
+                        Agregar Producto
+                    </Button>
                 </Grid>
 
                 <PaginationContainer item xs={12}>
