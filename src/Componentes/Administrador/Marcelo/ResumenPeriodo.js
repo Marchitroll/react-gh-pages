@@ -4,55 +4,51 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const ResumenPeriodo = () => {
+const ResumenPeriodo = ({ setFechaInicio, setFechaFin, style }) => {
     const today = new Date().toISOString().split('T')[0];
 
-    // Estado para las fechas y el periodo seleccionado
-    const [fechaInicio, setFechaInicio] = useState(today);
-    const [fechaFin, setFechaFin] = useState(today);
+    const [inicio, setInicio] = useState(today);
+    const [fin, setFin] = useState(today);
 
-    // Manejador de clic en el botón de búsqueda
     const handleBuscarClick = () => {
-        const inicio = new Date(fechaInicio);
-        const fin = new Date(fechaFin);
+        const fechaInicio = new Date(inicio);
+        const fechaFin = new Date(fin);
 
-        // Verificar si la fecha de inicio es posterior a la fecha de fin
-        if (inicio > fin) {
+        if (fechaInicio > fechaFin) {
             alert('La fecha de inicio no puede ser posterior a la fecha de fin.');
             return;
         }
 
-        console.log('Fecha de inicio:', fechaInicio);
-        console.log('Fecha fin:', fechaFin);
+        sessionStorage.setItem('fechaInicio', inicio);
+        sessionStorage.setItem('fechaFin', fin);
+
+        setFechaInicio(inicio);
+        setFechaFin(fin);
     };
 
     return (
-        <Box>
-            {/* Título */}
+        <Box style={style}>
             <Typography variant="h6">Seleccionar Período</Typography>
-            {/* Selector de fecha de inicio */}
             <TextField
                 id="fecha-inicio"
                 label="Fecha de Inicio"
                 type="date"
-                value={fechaInicio}
-                onChange={({ target }) => setFechaInicio(target.value)}
+                value={inicio}
+                onChange={({ target }) => setInicio(target.value)}
                 InputLabelProps={{ shrink: true }}
                 fullWidth
                 margin="normal"
             />
-            {/* Selector de fecha de fin */}
             <TextField
                 id="fecha-fin"
                 label="Fecha Fin"
                 type="date"
-                value={fechaFin}
-                onChange={({ target }) => setFechaFin(target.value)}
+                value={fin}
+                onChange={({ target }) => setFin(target.value)}
                 InputLabelProps={{ shrink: true }}
                 fullWidth
                 margin="normal"
             />
-            {/* Botón de búsqueda */}
             <Button onClick={handleBuscarClick} variant="contained" color="primary">
                 Buscar
             </Button>
