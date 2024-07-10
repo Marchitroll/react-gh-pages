@@ -95,7 +95,7 @@ const CrearCuenta = () => {
       setUsuarioCreado(true);
       localStorage.setItem('usuario', JSON.stringify({ correo }));
       setTimeout(() => {
-        navigate(`/PaginaPrincipalUsuario/${nuevoUsuarioId}`);
+        navigate(`/login`);
       }, 2000);
     } catch (error) {
       console.error('Error:', error);
